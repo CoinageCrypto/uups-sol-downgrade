@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.5.16;
 
 import "../beacon/IBeaconUpgradeable.sol";
 import "../../utils/AddressUpgradeable.sol";
@@ -12,9 +12,9 @@ import "../utils/Initializable.sol";
  *
  * _Available since v4.1._
  *
- * @custom:oz-upgrades-unsafe-allow delegatecall
+ * (Custom tag removed from here due to compiler error: "custom:oz-upgrades-unsafe-allow not valid for contracts")
  */
-abstract contract ERC1967UpgradeUpgradeable is Initializable {
+contract ERC1967UpgradeUpgradeable is Initializable {
     function __ERC1967Upgrade_init() internal initializer {
         __ERC1967Upgrade_init_unchained();
     }
