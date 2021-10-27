@@ -1,0 +1,27 @@
+{
+  "name": "uups-sol-downgrade",
+  "version": "1.0.0",
+  "description": "A downgraded version of selected UUPS contracts",
+  "main": "index.js",
+  "scripts": {
+    "test": "hardhat test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoinageCrypto/uups-sol-downgrade.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CoinageCrypto/uups-sol-downgrade/issues"
+  },
+  "homepage": "https://github.com/CoinageCrypto/uups-sol-downgrade#readme",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "2.0.2",
+    "@openzeppelin/contracts-upgradeable": "4.3.2",
+    "@openzeppelin/hardhat-upgrades": "1.11.0",
+    "ethers": "5.5.1",
+    "hardhat": "2.6.7"
+  }
+}
