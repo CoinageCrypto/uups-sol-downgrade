@@ -40,7 +40,6 @@ contract ERC1967UpgradeUpgradeable is Initializable {
      * @dev Returns the current implementation address.
      */
     function _getImplementation() internal view returns (address impl) {
-        // return StorageSlotUpgradeable.getAddressSlot(_IMPLEMENTATION_SLOT).value;
         // solhint-disable-next-line no-inline-assembly
         assembly {
             impl := sload(_IMPLEMENTATION_SLOT)
@@ -52,7 +51,6 @@ contract ERC1967UpgradeUpgradeable is Initializable {
      */
     function _setImplementation(address newImplementation) private {
         require(AddressUpgradeable.isContract(newImplementation), "ERC1967: new implementation is not a contract");
-        // StorageSlotUpgradeable.getAddressSlot(_IMPLEMENTATION_SLOT).value = newImplementation;
 
         // solhint-disable-next-line no-inline-assembly
         assembly {
@@ -115,12 +113,8 @@ contract ERC1967UpgradeUpgradeable is Initializable {
         }
 
         // Perform rollback test if not already in progress
-        // StorageSlotUpgradeable.BooleanSlot storage rollbackTesting = StorageSlotUpgradeable.getBooleanSlot(_ROLLBACK_SLOT);
-        // if (!rollbackTesting.value) {
         if (rollbackTesting == 0) {
             // Trigger rollback using upgradeTo from the new implementation
-            // rollbackTesting.value = true;
-            // rollbackTesting = true;
             // solhint-disable-next-line no-inline-assembly
             assembly {
                 sstore(_ROLLBACK_SLOT, 1)
@@ -129,8 +123,6 @@ contract ERC1967UpgradeUpgradeable is Initializable {
                 newImplementation,
                 abi.encodeWithSignature("upgradeTo(address)", oldImplementation)
             );
-            // rollbackTesting.value = false;
-            // rollbackTesting = false;
             // solhint-disable-next-line no-inline-assembly
             assembly {
                 sstore(_ROLLBACK_SLOT, 0)
@@ -158,7 +150,6 @@ contract ERC1967UpgradeUpgradeable is Initializable {
      * @dev Returns the current admin.
      */
     function _getAdmin() internal view returns (address) {
-        // return StorageSlotUpgradeable.getAddressSlot(_ADMIN_SLOT).value;
         address adminAddress;
 
         // solhint-disable-next-line no-inline-assembly
@@ -173,7 +164,6 @@ contract ERC1967UpgradeUpgradeable is Initializable {
      */
     function _setAdmin(address newAdmin) private {
         require(newAdmin != address(0), "ERC1967: new admin is the zero address");
-        // StorageSlotUpgradeable.getAddressSlot(_ADMIN_SLOT).value = newAdmin;
         // solhint-disable-next-line no-inline-assembly
         assembly {
             sstore(_ADMIN_SLOT, newAdmin)
@@ -205,7 +195,6 @@ contract ERC1967UpgradeUpgradeable is Initializable {
      * @dev Returns the current beacon.
      */
     function _getBeacon() internal view returns (address) {
-        // return StorageSlotUpgradeable.getAddressSlot(_BEACON_SLOT).value;
         address beaconAddress;
 
         // solhint-disable-next-line no-inline-assembly
@@ -224,7 +213,6 @@ contract ERC1967UpgradeUpgradeable is Initializable {
             AddressUpgradeable.isContract(IBeaconUpgradeable(newBeacon).implementation()),
             "ERC1967: beacon implementation is not a contract"
         );
-        // StorageSlotUpgradeable.getAddressSlot(_BEACON_SLOT).value = newBeacon;
         // solhint-disable-next-line no-inline-assembly
         assembly {
             sstore(_BEACON_SLOT, newBeacon)
