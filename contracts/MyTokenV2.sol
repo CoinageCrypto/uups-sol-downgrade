@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.5.16;
 
 import "./open-zeppelin-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "./open-zeppelin-upgradeable/proxy/utils/Initializable.sol";
@@ -18,7 +18,7 @@ contract MyTokenV2 is Initializable, UUPSUpgradeable {
         _;
     }
 
-    function _authorizeUpgrade(address) internal override onlyOwner {}
+    function _authorizeUpgrade(address) internal onlyOwner {}
 
     function iCanRead() public pure returns (uint) {
         return 42;
