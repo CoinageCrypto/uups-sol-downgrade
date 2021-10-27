@@ -1,8 +1,11 @@
 const { ethers, upgrades } = require("hardhat");
 const assert = require("assert");
 
+<<<<<<< HEAD
 // Version 0.8.x of the solidity compiler: All tests pass
 
+=======
+>>>>>>> c920859 (Working sample contract with UUPS upgrade)
 describe("MyToken", function () {
   it("deploys", async function () {
     const MyTokenV1 = await ethers.getContractFactory("MyTokenV1");
