@@ -11,11 +11,6 @@ contract MyTokenV2 is Initializable {
         _owner = msg.sender;
     }
 
-    modifier onlyOwner {
-        require(_owner == msg.sender, "Ownable: caller is not the owner");
-        _;
-    }
-
     function iCanRead() public pure returns (uint) {
         return 42;
     }
