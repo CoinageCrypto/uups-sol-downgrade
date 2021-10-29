@@ -6,12 +6,22 @@ import "./open-zeppelin-upgradeable/proxy/utils/Initializable.sol";
 contract MyTokenV2 is Initializable {
 
     address private _owner;
+    uint internal _privateInteger;
 
     function initialize() initializer public {
         _owner = msg.sender;
     }
 
-    function iCanRead() public pure returns (uint) {
-        return 42;
+    modifier onlyOwner {
+        require(_owner == msg.sender, "Ownable: caller is not the owner");
+        _;
     }
+    function iCanWrite(uint newValue) public onlyOwner {
+        _privateInteger = newValue;
+    }
+
+    function iCanRead() public view returns (uint) {
+        return _privateInteger;
+    }
+
 }
