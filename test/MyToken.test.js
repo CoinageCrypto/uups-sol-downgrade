@@ -17,9 +17,7 @@ describe("MyToken", function () {
 
   it("deploy-and-upgrade", async function () {
     const MyTokenV1 = await ethers.getContractFactory("MyTokenV1");
-    const myToken = await upgrades.deployProxy(MyTokenV1, {
-      unsafeAllow: ["constructor"],
-    });
+    const myToken = await upgrades.deployProxy(MyTokenV1);
     await myToken.deployed();
     const MyTokenV2 = await ethers.getContractFactory("MyTokenV2");
     const myTokenUpgraded = await upgrades.upgradeProxy(myToken, MyTokenV2);
